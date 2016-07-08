@@ -8,3 +8,8 @@
   display: block;
   margin: auto;
 }
+
+#siren_led
+{
+  font-size: 35px;
+}

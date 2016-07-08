@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body ng-controller="MainController" ng-keyup="stop()" ng-keydown="play()">
+<body ng-controller="MainController">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-8 col-xs-offset-2">
@@ -31,37 +31,28 @@
                 <!-- Mode -->
                 <div class="col-xs-12 col-sm-3 text-center">
                   <div class="col-xs-12">
-                    <p><small>Mode</small></p>
-                  </div>
-                  <div class="col-xs-12">
-                    <input type="text" class="parameter" id="siren_mode" />
+                    <span data-toggle="tooltip" data-placement="top" title="Mode">
+                      <div class="col-xs-12">
+                        Mode
+                      </div>
+                    </span>
                   </div>
                 </div>
                 
                 <!-- Speed -->
-                <div class="col-xs-12 col-sm-3 text-center">
-                  <div class="col-xs-12">
-                    <p><small>Speed</small></p>
-                  </div>
-                  <div class="col-xs-12">
-                    <knob id="siren_speed" knob-data="siren_speed.value" knob-options="siren_speed.options"></knob>
-                  </div>
+                <div class="col-xs-12 col-sm-3 text-center" data-toggle="tooltip" data-placement="top" title="Speed" tooltip>
+                  <knob id="siren_speed" knob-data="siren_speed.value" knob-options="siren_speed.options"></knob>
+                </div>
+                
+                <!-- Tone -->
+                <div class="col-xs-12 col-sm-3 text-center" data-toggle="tooltip" data-placement="top" title="Tone" tooltip>
+                  <knob id="siren_tone" knob-data="siren_tone.value" knob-options="siren_tone.options"></knob>
                 </div>
                 
                 <!-- LED -->
                 <div class="col-xs-12 col-sm-3 text-center">
                   <div class="col-xs-12">
-                    <span id="siren_led" class="glyphicon glyphicon-play-circle ng-class:{ 'text-success': sirenPlaying, 'text-danger': !sirenPlaying };" aria-hidden="true"></span>
-                  </div>
-                </div>
-                
-                <!-- Tone -->
-                <div class="col-xs-12 col-sm-3 text-center">
-                  <div class="col-xs-12">
-                    <p><small>Tone</small></p>
-                  </div>
-                  <div class="col-xs-12">
-                    <knob id="siren_tone" knob-data="siren_tone.value" knob-options="siren_tone.options"></knob>
+                    <span id="siren_led" ng-show="sirenPlaying" class="glyphicon glyphicon-play-circle text-success" aria-hidden="true"></span>
                   </div>
                 </div>
                 
@@ -76,34 +67,19 @@
             </div>
             <div class="panel-body">
               <div class="row">
-                <!-- Mode -->
-                <div class="col-xs-12 col-sm-3 text-center">
-                  <div class="col-xs-12">
-                    <p><small>Time</small></p>
-                  </div>
-                  <div class="col-xs-12">
-                    <input type="text" class="parameter" id="delay_time" />
-                  </div>
+                <!-- Time -->
+                <div class="col-xs-12 col-sm-3 text-center" data-toggle="tooltip" data-placement="top" title="Time" tooltip>
+                  <knob id="delay_time" knob-data="delay_time.value" knob-options="delay_time.options"></knob>
+                </div>
+                
+                <!-- Feedback -->
+                <div class="col-xs-12 col-sm-3 text-center" data-toggle="tooltip" data-placement="top" title="Feedback" tooltip>
+                  <knob id="delay_feedback" knob-data="delay_feedback.value" knob-options="delay_feedback.options"></knob>
                 </div>
                 
                 <!-- Mode -->
-                <div class="col-xs-12 col-sm-3 text-center">
-                  <div class="col-xs-12">
-                    <p><small>Feedback</small></p>
-                  </div>
-                  <div class="col-xs-12">
-                    <input type="text" class="parameter" id="delay_feedback" />
-                  </div>
-                </div>
-                
-                <!-- Mode -->
-                <div class="col-xs-12 col-sm-3 text-center">
-                  <div class="col-xs-12">
-                    <p><small>Mix</small></p>
-                  </div>
-                  <div class="col-xs-12">
-                    <input type="text" class="parameter" id="delay_mix" />
-                  </div>
+                <div class="col-xs-12 col-sm-3 text-center" data-toggle="tooltip" data-placement="top" title="Mix" tooltip>
+                  <knob id="delay_mix" knob-data="delay_mix.value" knob-options="delay_mix.options"></knob>
                 </div>
                 
                 <!-- On/Off -->
@@ -124,34 +100,20 @@
             </div>
             <div class="panel-body">
               <div class="row">
-                <!-- Mode -->
-                <div class="col-xs-12 col-sm-3 text-center">
-                  <div class="col-xs-12">
-                    <p><small>High</small></p>
-                  </div>
-                  <div class="col-xs-12">
-                    <input type="text" id="high" />
-                  </div>
+              
+                <!-- High -->
+                <div class="col-xs-12 col-sm-3 text-center" data-toggle="tooltip" data-placement="top" title="High" tooltip>
+                  <knob id="eq_high" knob-data="eq_high.value" knob-options="eq_high.options"></knob>
                 </div>
                 
-                <!-- Mode -->
-                <div class="col-xs-12 col-sm-3 text-center">
-                  <div class="col-xs-12">
-                    <p><small>Medium</small></p>
-                  </div>
-                  <div class="col-xs-12">
-                    <input type="text" id="medium" />
-                  </div>
+                <!-- Medium -->
+                <div class="col-xs-12 col-sm-3 text-center" data-toggle="tooltip" data-placement="top" title="Medium" tooltip>
+                  <knob id="eq_medium" knob-data="eq_medium.value" knob-options="eq_medium.options"></knob>
                 </div>
                 
-                <!-- Mode -->
-                <div class="col-xs-12 col-sm-3 text-center">
-                  <div class="col-xs-12">
-                    <p><small>Low</small></p>
-                  </div>
-                  <div class="col-xs-12">
-                    <input type="text" id="low" />
-                  </div>
+                <!-- Low -->
+                <div class="col-xs-12 col-sm-3 text-center" data-toggle="tooltip" data-placement="top" title="Low" tooltip>
+                  <knob id="eq_low" knob-data="eq_low.value" knob-options="eq_low.options"></knob>
                 </div>
                 
                 <!-- On/Off -->
