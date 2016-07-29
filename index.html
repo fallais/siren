@@ -13,10 +13,14 @@
   <link rel="stylesheet" href="/css/style.css">
 </head>
 
-<body ng-controller="MainController">
+<body ng-controller="MainController" ng-keydown="playKey($event)" ng-keyup="stopKey($event)">
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-8 col-xs-offset-2">
+        <div id="messageContainer" class="well">
+          <p>Hope you will enjoy the <b>Siren</b> of the <b>Backyard Corner Sound System</b>. Use spacebar to play.</p>
+        </div>
+        
 				<div id="sirenContainer" class="well">
 
           <!-- Siren -->

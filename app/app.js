@@ -164,7 +164,21 @@ app.controller('MainController', ['$scope', function($scope) {
     
     osc.stop();
     lfo.stop();
-  }
+  };
+  
+  $scope.stopKey = function (e){
+    console.log("lol");
+    if (e.keyCode === 32) {
+      console.log("looooooooool");
+      $scope.stop();
+    }
+  };
+  
+  $scope.playKey = function (e){
+    if (e.keyCode === 32) {
+      $scope.play();
+    }
+  };
   
   // EnableDelay()
   $scope.enableDelay = function (e) {
