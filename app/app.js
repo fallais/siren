@@ -8,8 +8,15 @@ var app = angular.module('sirenApp', ['ui.knob', 'ui.toggle']);
 
 // MainController
 app.controller('MainController', ['$scope', function($scope) { 
+  // AudioContext
+  var contextClass = (window.AudioContext || window.webkitAudioContext || window.mozAudioContext || window.oAudioContext || window.msAudioContext);
+  if (contextClass) {
+    var ctx = new contextClass();
+  } else {
+    alert("AudioContext is not available");
+  }
+  
   // Sound variables
-  var ctx = new window.AudioContext();
   var osc, lfo, oscGain, lfoGain;
   var sirenPlaying = false;
   var tuna = new Tuna(ctx);
@@ -21,29 +28,6 @@ app.controller('MainController', ['$scope', function($scope) {
     wetLevel: 0.3,    //0 to 1+
     dryLevel: 1,       //0 to 1+
     cutoff: 2000,      //cutoff frequency of the built in lowpass-filter. 20 to 22050
-    bypass: 0
-  });
-  
-  // Equalizer
-  var lowFilter = new tuna.Filter({
-    frequency: 120, //20 to 22050
-    Q: 1, //0.001 to 100
-    gain: 0, //-40 to 40
-    filterType: "bandpass", //lowpass, highpass, bandpass, lowshelf, highshelf, peaking, notch, allpass
-    bypass: 0
-  });
-  var mediumFilter = new tuna.Filter({
-    frequency: 3000, //20 to 22050
-    Q: 1, //0.001 to 100
-    gain: 0, //-40 to 40
-    filterType: "bandpass", //lowpass, highpass, bandpass, lowshelf, highshelf, peaking, notch, allpass
-    bypass: 0
-  });
-  var highFilter = new tuna.Filter({
-    frequency: 8000, //20 to 22050
-    Q: 1, //0.001 to 100
-    gain: 0, //-40 to 40
-    filterType: "bandpass", //lowpass, highpass, bandpass, lowshelf, highshelf, peaking, notch, allpass
     bypass: 0
   });
   
@@ -127,51 +111,6 @@ app.controller('MainController', ['$scope', function($scope) {
     }
   };
   
-  // Equalizer (High)
-  $scope.eq_high = {
-    value: 0.2,
-    options: {
-      width: 70,
-      height: 70,
-      min: 0.1,
-      max: 1,
-      step: 0.1,
-      bgColor: '#FC91EF',
-      fgColor: '#F21AD9',
-      displayInput: false
-    }
-  };
-  
-  // Equalizer (Medium)
-  $scope.eq_medium = {
-    value: 0.2,
-    options: {
-      width: 70,
-      height: 70,
-      min: 0.1,
-      max: 1,
-      step: 0.1,
-      bgColor: '#FC91EF',
-      fgColor: '#F21AD9',
-      displayInput: false
-    }
-  };
-  
-  // Equalizer (Low)
-  $scope.eq_low = {
-    value: 0.2,
-    options: {
-      width: 70,
-      height: 70,
-      min: 0.1,
-      max: 1,
-      step: 0.1,
-      bgColor: '#FC91EF',
-      fgColor: '#F21AD9',
-      displayInput: false
-    }
-  };
-  
   // Play()
   $scope.play = function (e) {
     if ($scope.sirenPlaying) {
@@ -186,6 +125,7 @@ app.controller('MainController', ['$scope', function($scope) {
     
     // Create the LFO
     lfo = ctx.createOscillator();
+    lfo.type = $scope.mode;
     lfoGain = ctx.createGain();
     lfoGain.gain.value = 200;
    
@@ -206,7 +146,6 @@ app.controller('MainController', ['$scope', function($scope) {
     } else {
       oscGain.connect(ctx.destination);
     }
-    
 
     osc.start(0);
     lfo.start(0);

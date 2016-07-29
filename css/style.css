@@ -1,15 +1,10 @@
-.jumbotron
+#siren
 {
   margin-top: 40px;
-}
-
-.khantrol-knob
-{
-  display: block;
-  margin: auto;
 }
 
 #siren_led
 {
   font-size: 35px;
+  margin-top: 18px;
 }
