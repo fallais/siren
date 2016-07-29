@@ -83,7 +83,7 @@ app.controller('MainController', ['$scope', function($scope) {
   
   // Delay (Feedback)
   $scope.delay_feedback = {
-    value: 0.4,
+    value: 0.5,
     options: {
       width: 70,
       height: 70,
