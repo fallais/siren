@@ -120,6 +120,7 @@ app.controller('MainController', ['$scope', function($scope) {
 
     // Create the oscillator
     osc = ctx.createOscillator();
+    osc.type = 'square';
     oscGain = ctx.createGain();
     oscGain.gain.value=0.2;
     
