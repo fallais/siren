@@ -53,7 +53,7 @@ app.controller('MainController', ['$scope', function($scope) {
   
   // Siren (Tone)
   $scope.siren_tone = {
-    value: 600,
+    value: 700,
     options: {
       width: 70,
       height: 70,
