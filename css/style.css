@@ -4,6 +4,12 @@
   padding-bottom: 0px;
 }
 
+#mode
+{
+  margin-top: 22px;
+  font-size: 120%;
+}
+
 #siren_led
 {
   font-size: 35px;
