@@ -148,6 +148,7 @@ app.controller('MainController', ['$scope', function($scope) {
       oscGain.connect(ctx.destination);
     }
 
+    // Start the LFO and the main oscilator
     osc.start(0);
     lfo.start(0);
   };
