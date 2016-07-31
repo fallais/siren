@@ -159,9 +159,9 @@ app.controller('MainController', ['$scope', function($scope) {
     }
     $scope.sirenPlaying = false;
        
-    oscGain.disconnect(oscGain);
-    lfoGain.disconnect(lfoGain);
-    lfo.disconnect(osc.frequency);
+    oscGain.disconnect();
+    lfoGain.disconnect();
+    lfo.disconnect();
     
     osc.stop();
     lfo.stop();
