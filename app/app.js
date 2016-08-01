@@ -131,13 +131,14 @@ app.controller('MainController', ['$scope', function($scope) {
     if ($scope.sirenPlaying) {
       return;
     }
+    
+    // Set the siren as playing
     $scope.sirenPlaying = true;
 
     // Create the oscillator
     osc = ctx.createOscillator();
     osc.type = 'square';
     oscGain = ctx.createGain();
-    oscGain.gain.value = $scope.siren_volume.value;;
     
     // Create the LFO
     lfo = ctx.createOscillator();
@@ -146,6 +147,7 @@ app.controller('MainController', ['$scope', function($scope) {
     lfoGain.gain.value = 200;
    
     // Get the values
+    oscGain.gain.value = $scope.siren_volume.value;
     osc.frequency.value = $scope.siren_tone.value;
     lfo.frequency.value = $scope.siren_speed.value;
     delay.feedback = $scope.delay_feedback.value;
@@ -173,21 +175,23 @@ app.controller('MainController', ['$scope', function($scope) {
     if (!$scope.sirenPlaying) {
       return;
     }
+    
+    // Set the siren as not playing
     $scope.sirenPlaying = false;
        
+    // Disconnect all sources
     oscGain.disconnect();
     lfoGain.disconnect();
     lfo.disconnect();
     
+    // Stop all oscilators
     osc.stop();
     lfo.stop();
   };
   
   // StopKey
   $scope.stopKey = function (e){
-    console.log("lol");
     if (e.keyCode === 32) {
-      console.log("looooooooool");
       $scope.stop();
     }
   };
@@ -216,18 +220,16 @@ app.controller('MainController', ['$scope', function($scope) {
 //------------------------------------------------------------------------------
 
 app.directive('tooltip', function(){
-    return {
-        restrict: 'A',
-        link: function(scope, element, attrs){
-            $(element).hover(function(){
-                // on mouseenter
-                $(element).tooltip('show');
-            }, function(){
-                // on mouseleave
-                $(element).tooltip('hide');
-            });
-        }
-    };
+  return {
+    restrict: 'A',
+    link: function(scope, element, attrs){
+      $(element).hover(function(){
+        $(element).tooltip('show');
+      }, function(){
+        $(element).tooltip('hide');
+      });
+    }
+  };
 });
 
 //------------------------------------------------------------------------------
