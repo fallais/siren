@@ -115,8 +115,8 @@ app.controller('MainController', ['$scope', function($scope) {
   $scope.siren_volume = {
     value: 0.2,
     options: {
-      width: 70,
-      height: 70,
+      width: 38,
+      height: 38,
       min: 0.1,
       max: 1,
       step: 0.1,
