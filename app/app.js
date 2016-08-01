@@ -163,6 +163,7 @@ app.controller('MainController', ['$scope', function($scope) {
       oscGain.connect(ctx.destination);
     }
 
+    // Start the LFO and the main oscilator
     osc.start(0);
     lfo.start(0);
   };
@@ -174,9 +175,9 @@ app.controller('MainController', ['$scope', function($scope) {
     }
     $scope.sirenPlaying = false;
        
-    oscGain.disconnect(oscGain);
-    lfoGain.disconnect(lfoGain);
-    lfo.disconnect(osc.frequency);
+    oscGain.disconnect();
+    lfoGain.disconnect();
+    lfo.disconnect();
     
     osc.stop();
     lfo.stop();
