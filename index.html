@@ -4,6 +4,7 @@
 	<meta charset="utf-8">
 	<title>Siren</title>
   
+  <!-- Favicon -->
   <link rel="icon" type="image/png" href="/favicon.png" />
 
 	<!-- CSS -->
@@ -17,8 +18,12 @@
 	<div class="container-fluid">
 		<div class="row">
 			<div class="col-xs-8 col-xs-offset-2">
+        <div id="logoContainer" class="well">
+          <p class="text-center"><img src="/img/logo.png" width="80" class="center-block img-responsive" /></p>
+        </div>
+        
         <div id="messageContainer" class="well">
-          <p>Hope you will enjoy the <b>Siren</b> of the <b>Backyard Corner Sound System</b>. Press the spacebar to play.</p>
+          <p>Hello ! Hope you will enjoy the <b>Siren</b> of the <b>Backyard Corner Sound System</b>. You can also press the spacebar to trigger it.</p>
         </div>
         
 				<div id="sirenContainer" class="well">
@@ -37,7 +42,7 @@
                     <span data-toggle="tooltip" data-placement="top" title="Mode">
                       <div class="col-xs-12">
                         <select name="mode" id="mode" ng-model="mode" class="form-group" selected='sine'>
-                          <option value="sine" select="selected">Sine</option>
+                          <option value="sine" selected>Sine</option>
                           <option value="square">Square</option>
                           <option value="triangle">Triangle</option>
                           <option value="sawtooth">Sawtooth</option>
@@ -56,7 +61,7 @@
                 <div class="col-xs-12 col-sm-3 text-center" data-toggle="tooltip" data-placement="top" title="Tone" tooltip>
                   <knob id="siren_tone" knob-data="siren_tone.value" knob-options="siren_tone.options"></knob>
                 </div>
-                
+
                 <!-- LED -->
                 <div class="col-xs-12 col-sm-3 text-center">
                   <div class="col-xs-12">
@@ -102,8 +107,17 @@
 				</div>
         
         <div id="playContainer" class="well">
-          <!-- Play -->
-          <button type="button" id="play" ng-mousedown="play()" ng-mouseup="stop()" class="btn btn-danger center-block">Play</button>
+          <div class="row">
+            <!-- Play -->
+            <div class="col-xs-12 col-sm-6 text-center">
+              <button type="button" id="play" ng-mousedown="play()" ng-mouseup="stop()" class="btn btn-danger center-block">Play</button>
+            </div>
+            
+            <!-- Volume -->
+            <div class="col-xs-12 col-sm-6 text-center" data-toggle="tooltip" data-placement="top" title="Volume" tooltip>
+              <knob id="siren_volume" knob-data="siren_volume.value" knob-options="siren_volume.options"></knob>
+            </div>
+          </div>
         </div>
 			</div>
 		</div>

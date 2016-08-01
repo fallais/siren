@@ -111,6 +111,21 @@ app.controller('MainController', ['$scope', function($scope) {
     }
   };
   
+  // Volume
+  $scope.siren_volume = {
+    value: 0.2,
+    options: {
+      width: 70,
+      height: 70,
+      min: 0.1,
+      max: 1,
+      step: 0.1,
+      bgColor: '#AA0000',
+      fgColor: '#F00',
+      displayInput: false
+    }
+  };
+  
   // Play()
   $scope.play = function (e) {
     if ($scope.sirenPlaying) {
@@ -122,7 +137,7 @@ app.controller('MainController', ['$scope', function($scope) {
     osc = ctx.createOscillator();
     osc.type = 'square';
     oscGain = ctx.createGain();
-    oscGain.gain.value=0.2;
+    oscGain.gain.value = $scope.siren_volume.value;;
     
     // Create the LFO
     lfo = ctx.createOscillator();
@@ -131,7 +146,7 @@ app.controller('MainController', ['$scope', function($scope) {
     lfoGain.gain.value = 200;
    
     // Get the values
-    osc.frequency.value = $("#siren_tone").val();
+    osc.frequency.value = $scope.siren_tone.value;
     lfo.frequency.value = $scope.siren_speed.value;
     delay.feedback = $scope.delay_feedback.value;
     delay.delayTime = $scope.delay_time.value;
@@ -167,6 +182,7 @@ app.controller('MainController', ['$scope', function($scope) {
     lfo.stop();
   };
   
+  // StopKey
   $scope.stopKey = function (e){
     console.log("lol");
     if (e.keyCode === 32) {
@@ -175,6 +191,7 @@ app.controller('MainController', ['$scope', function($scope) {
     }
   };
   
+  // PlayKey
   $scope.playKey = function (e){
     if (e.keyCode === 32) {
       $scope.play();

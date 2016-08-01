@@ -3,7 +3,7 @@
   padding-bottom: 0px;
 }
 
-#messageContainer
+#logoContainer
 {
   margin-top: 40px;
 }
@@ -17,5 +17,10 @@
 #siren_led
 {
   font-size: 35px;
+  margin-top: 18px;
+}
+
+#play
+{
   margin-top: 18px;
 }
