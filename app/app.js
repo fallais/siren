@@ -153,6 +153,14 @@ app.controller('MainController', ['$scope', function($scope) {
     delay.feedback = $scope.delay_feedback.value;
     delay.delayTime = $scope.delay_time.value;
     delay.wetLevel = $scope.delay_mix.value;
+    
+    // Watch for updates
+    $scope.$watch("siren_speed.value", function(newValue, oldValue) {
+      lfo.frequency.value = newValue;
+    });
+    $scope.$watch("siren_tone.value", function(newValue, oldValue) {
+      osc.frequency.value = newValue;
+    });
 
     // Connect 
     lfo.connect(lfoGain);
@@ -206,11 +214,6 @@ app.controller('MainController', ['$scope', function($scope) {
   // EnableDelay()
   $scope.enableDelay = function (e) {
     $scope.delay = !$scope.delay;
-  };
-  
-  // EnableEqualizer()
-  $scope.enableEqualizer = function (e) {
-    $scope.equalizer = !$scope.equalizer;
   };
   
 }]);
