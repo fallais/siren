@@ -3,7 +3,7 @@
   margin-top: 20px;
 }
 
-.well
+#sirenContainer, #messageContainer
 {
   padding-bottom: 0px;
 }
